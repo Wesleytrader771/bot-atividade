@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel do Bot</title>
+
+<style>
+body {
+  background: #0a0f1c;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+}
+
+.box {
+  margin-top: 100px;
+}
+
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #00ffcc;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>Painel do Bot</h1>
+
+  <p id="status">Status: Desligado</p>
+
+  <button onclick="ligar()">Ligar Bot</button>
+  <button onclick="desligar()">Desligar Bot</button>
+</div>
+
+<script>
+function ligar() {
+  fetch('/ligar', { method: 'POST' })
+  document.getElementById('status').innerText = "Status: Ligado 🚀"
+}
+
+function desligar() {
+  fetch('/desligar', { method: 'POST' })
+  document.getElementById('status').innerText = "Status: Desligado ❌"
+}
+</script>
+
+</body>
+</html>

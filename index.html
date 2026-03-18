@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Coderise Bot</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0a0f1c;
+  color: white;
+  text-align: center;
+}
+
+.box {
+  background: #111827;
+  padding: 30px;
+  border-radius: 15px;
+  width: 300px;
+  margin: 120px auto;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
+  background: #00ffcc;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Login / Cadastro</h2>
+
+  <input id="user" type="text" placeholder="Usuário">
+  <input id="pass" type="password" placeholder="Senha">
+
+  <button onclick="login()">Entrar</button>
+  <button onclick="register()">Criar conta</button>
+</div>
+
+<script>
+function login() {
+  const user = document.getElementById('user').value
+  const pass = document.getElementById('pass').value
+
+  fetch('/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ user, pass })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      window.location.href = "/painel.html"
+    } else {
+      alert('Erro no login')
+    }
+  })
+}
+
+function register() {
+  const user = document.getElementById('user').value
+  const pass = document.getElementById('pass').value
+
+  fetch('/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ user, pass })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      alert('Conta criada!')
+    } else {
+      alert('Usuário já existe')
+    }
+  })
+}
+</script>
+
+</body>
+</html>
