@@ -6,6 +6,7 @@ function fazerCommit() {
   exec(comando, { shell: "cmd.exe" }, (err, stdout, stderr) => {
     if (err) {
       console.log("Erro:", err)
+      console.log(stderr)
       return
     }
     console.log("Commit + Push feito 🚀")
