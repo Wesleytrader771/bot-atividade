@@ -1,7 +1,7 @@
 const { exec } = require('child_process')
 
 function fazerCommit() {
-  const comando = "echo %date% %time% >> atividade.txt && git add . && git commit -m \"auto commit\" && git push origin master"
+  const comando = "echo %date% %time% >> atividade.txt && git add . && git commit -m \"auto commit\" && git push origin main"
 
   exec(comando, { shell: "cmd.exe" }, (err, stdout, stderr) => {
     if (err) {
