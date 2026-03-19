@@ -2,9 +2,20 @@
 title BOT COMMIT AUTOMATICO
 color 0A
 
+:: SOM AO INICIAR (beep)
+echo ^G
+
+echo ================================
+echo      INICIANDO BOT...
+echo ================================
+timeout /t 2 >nul
+
 set contador=1
 
 :loop
+
+cls
+title BOT ATIVO ^| TOTAL DE COMMITS: %contador%
 
 echo [%time%] Commit #%contador% OK
 
@@ -17,7 +28,5 @@ git push
 set /a contador+=1
 
 timeout /t 6 >nul
-
-cls
 
 goto loop
