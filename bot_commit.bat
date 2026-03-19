@@ -1,29 +1,29 @@
 @echo off
-title INICIANDO BOT...
 color 0A
 
-:: SOM REAL AO INICIAR
+:: SOM AO INICIAR
 powershell -c (New-Object Media.SoundPlayer 'C:\Windows\Media\notify.wav').PlaySync();
 
-echo ================================
-echo        INICIANDO BOT...
-echo ================================
+title INICIANDO BOT...
+
+echo ==============================
+echo   BOT INICIADO COM SUCESSO
+echo ==============================
 timeout /t 2 >nul
 
 set contador=1
 
 :loop
 
-cls
 title BOT ATIVO ^| TOTAL: %contador%
 
 echo [%time%] Commit #%contador% OK
 
 echo Commit %contador% >> atividade.txt
 
-git add .
-git commit -m "commit #%contador%"
-git push
+git add . >nul 2>&1
+git commit -m "commit #%contador%" >nul 2>&1
+git push >nul 2>&1
 
 set /a contador+=1
 
