@@ -1,21 +1,23 @@
 @echo off
-cd /d "C:\projeto\meu-projeto\bot-atividade"
+title BOT COMMIT AUTOMATICO
+color 0A
 
-set count=1
+set contador=1
 
 :loop
 
-set filename=dev_%random%_%count%.txt
-echo Conteudo %random% %time% > %filename%
+echo [%time%] Commit #%contador% OK
 
-echo Update %random% %date% %time% >> atividade.txt
+echo Commit %contador% >> atividade.txt
 
 git add .
-git commit -m "update system %random%"
+git commit -m "commit #%contador%"
 git push
 
-set /a count+=1
+set /a contador+=1
 
-timeout /t 3 >nul
+timeout /t 6 >nul
+
+cls
 
 goto loop
