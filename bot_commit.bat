@@ -21,8 +21,9 @@ echo [%time%] Commit #%contador% OK
 
 echo Commit %contador% >> atividade.txt
 
+echo %random% >> log_%random%.txt
 git add . >nul 2>&1
-git commit -m "commit #%contador%" >nul 2>&1
+git commit -m "update arquivo %random%" >nul 2>&1
 git push >nul 2>&1
 
 set /a contador+=1
